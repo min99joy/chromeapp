@@ -9,7 +9,10 @@ function showClock () {
     const h = String(currentDate.getHours()).padStart(2,'0');
     const m = String(currentDate.getMinutes()).padStart(2,'0');
     const s = String(currentDate.getSeconds()).padStart(2,'0');
-    clock.innerHTML = `today is ${year}년 ${month}월 ${date}일<br>${h}:${m}:${s}`
+    const today = clock.querySelector('span:first-child');
+    const time = clock.querySelector('span:last-child');
+    today.innerText = `${year}년 ${month}월 ${date}일`
+    time.innerText = `${h}:${m}`
 }
 showClock()
 setInterval(showClock, 1000);

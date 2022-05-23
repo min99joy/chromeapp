@@ -23,11 +23,11 @@ function paintToDo(newTodo) {
     const closeBtn = document.createElement('button');
     li.id = newTodo.id;
     span.innerText = newTodo.text;
-    closeBtn.innerText = '❌';
+    closeBtn.innerText = 'x';
     closeBtn.addEventListener('click', deleteToDo)
     li.appendChild(span);
     li.appendChild(closeBtn);
-    toDoList.appendChild(li);
+    toDoList.prepend(li);
 }
 
 function hadleToDoSubmit(event) {

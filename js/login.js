@@ -1,8 +1,10 @@
 const loginForm = document.querySelector('#login-form');
 const loginInput = document.querySelector('#login-form input');
 const greeting = document.querySelector('#greeting');
-const logoutBtn = greeting.querySelector('button');
+const userPage = document.querySelector('body main');
+const logoutBtn = document.querySelector('#logoutBtn');
 
+const SHOW_CLASSNAME = 'show';
 const HIDDEN_CLASSNAME = 'hidden';
 const USERNAME_KEY = 'username'
 
@@ -11,15 +13,17 @@ const savedUsername = localStorage.getItem(USERNAME_KEY);
 const hidden = {
     addClass : function (element) {
         element.classList.add(HIDDEN_CLASSNAME);
+        element.classList.remove(SHOW_CLASSNAME);
     },
     removeClass : function (element) {
         element.classList.remove(HIDDEN_CLASSNAME);
+        element.classList.add(SHOW_CLASSNAME);
     }
 };
 
 function onLoginSubmit(event) {
-    const username = loginInput.value;
     event.preventDefault();
+    const username = loginInput.value;
     hidden.addClass(loginForm);
     localStorage.setItem(USERNAME_KEY, username);
     paintGreetings(username);
@@ -27,7 +31,7 @@ function onLoginSubmit(event) {
 
 function paintGreetings(username) {
     greeting.prepend(`Hello ${username}`);
-    hidden.removeClass(greeting);
+    hidden.removeClass(userPage);
     logoutBtn.addEventListener('click', onLogOut);
 };
 
@@ -36,7 +40,7 @@ function onLogOut() {
     loginInput.value = ''
     localStorage.removeItem(USERNAME_KEY);
     greeting.removeChild(greeting.firstChild);
-    hidden.addClass(greeting);
+    hidden.addClass(userPage);
 };
 
 if (savedUsername === null) {

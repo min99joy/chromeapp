@@ -1,17 +1,142 @@
+*{
+    transition: all ease 0.5s;
+}
+.centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 .hidden {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s linear 300ms, opacity 250ms;
+}
+.show {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s linear 0s, opacity 250ms;
+}
+html{
+    height: 99%;
 }
 body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:space-around;
+    height: 100%;
+    background-color: black;
     color: white;
 }
+header {
+    position: fixed;
+    display: flex;
+    justify-content: right;
+    top: 10px;
+    right: 20px;
+}
+section {
+    position: absolute;
+
+    top: 20%;
+}
+#weather {
+    padding-right: 30px;
+}
 #login-form {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
     width: 50%;
-    height: 50%;
 }
 #bgImage {
     position: fixed;
-    width: 100vw;
-    height: 100vh;
+    min-width: 100%;
+    height: 100%;
     left: 0;
     top: 0;
+    opacity: 50%;
+    pointer-events: none;
+}
+#clock{
+    pointer-events: none;
+}
+#clock span:last-child{
+    font-size: 11rem;
+    text-align: center;
+}
+#greeting {
+    margin: 0 0 30px 0;
+}
+footer {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    bottom: 3%;
+}
+#todo-list{
+    list-style: none;
+    width: 500px;
+    box-shadow: 5px;
+    color: white;
+    opacity: 80%;
+    overflow-y: scroll;
+    height: 350px;
+    position: relative;
+    padding: 0;
+}
+#todo-list::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+#todo-list li{
+    display: flex;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: rgba(0,0,0,0.7);
+    border-radius: 15px;
+}
+#todo-list li span {
+    flex-grow: 1;
+}
+input {
+    width: 500px;
+    height: 30px;
+    border: none;
+    background-color: transparent;
+    border-bottom: 2px solid whitesmoke;
+    color: white;
+}
+#login-form input {
+    width: 300px;
+}
+input::placeholder{
+    color: whitesmoke;
+}
+input:focus{
+    outline: none;
+    font-size: 1.5rem;
+    height: 40px;
+}
+input:hover{
+    transform: scale(1.2);
+}
+button{
+    padding: 5px 10px;
+    border: none;
+    background-color: rgba(0,0,0,0.7);
+    opacity: 80%;
+    border-radius: 30px;
+    color: whitesmoke;
+}
+button:hover{
+    background-color: whitesmoke;
+    color: rgba(0,0,0,0.7);
 }
